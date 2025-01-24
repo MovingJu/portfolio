@@ -73,8 +73,8 @@ hr { border-top: 4px solid #CCC; }
 }
 
 .tm-section-wrap {
-	width: calc(100% - 750px);
-	margin-left: 750px;
+	width: calc(100% - 500px);
+	margin-left: 350px;
 	margin-right: 0;
 	position: relative;
 }
@@ -88,13 +88,13 @@ hr { border-top: 4px solid #CCC; }
 }
 
 .tm-parallax {
-	width: 400px;	
+	width: 200px;	
 	min-height: 100%;
 	height: auto;
 	background: transparent;
 	position: absolute;
-    width: 400px;
-    left: -470px;
+    width: 150px;
+    left: 900px;
     top: 0;
 }
 
@@ -657,8 +657,18 @@ select:not([multiple]) {
 
 @media (max-width: 1400px) {
 	.tm-section-wrap {
-		width: calc(100% - 630px);
-		margin-left: 630px;
+		width: calc(100% - 480px);
+		margin-left: 350px;
+	}
+	.tm-parallax {
+		width: 200px;	
+		min-height: 100%;
+		height: auto;
+		background: transparent;
+		position: absolute;
+		width: 150px;
+		left: 850px;
+		top: 0;
 	}
 }
 
@@ -734,4 +744,11 @@ select:not([multiple]) {
 		width: 100%;
 		margin-left: 0;
 	}
+}
+
+.responsive-image {
+    width: 100%; /* 화면 너비에 맞게 이미지 크기 조정 */
+    height: auto; /* 비율을 유지하면서 높이 자동 조정 */
+    object-fit: cover; /* 이미지를 화면 크기에 맞게 잘라내기 */
+    max-height: 100vh; /* 이미지가 화면 크기를 초과하지 않도록 제한 */
 }
