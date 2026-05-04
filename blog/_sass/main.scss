@@ -284,10 +284,127 @@ p {
 
   //custom md tags styles
   div.highlight {
-    background: var(--primary-highlight-color);
-    padding: 5px;
-    border-radius: 5px;
-    margin: 10px 0px;
-    overflow: auto;
+    position: relative;
+    background: #1e1e1e;
+    border: 1px solid #3c3c3c;
+    border-radius: 6px;
+    margin: 16px 0;
+    overflow: hidden;
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      background: #252526;
+      padding: 5px 10px;
+      border-bottom: 1px solid #3c3c3c;
+      min-height: 30px;
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 1px solid #555;
+      color: #cccccc;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: 'Fira Code', monospace;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+
+      &:hover {
+        background: #3c3c3c;
+      }
+
+      &.copied {
+        color: #4ec9b0;
+        border-color: #4ec9b0;
+      }
+    }
+
+    pre {
+      margin: 0;
+      padding: 14px 16px;
+      overflow-x: auto;
+      background: transparent !important;
+
+      code {
+        font-family: 'Fira Code', monospace;
+        font-size: 0.82em;
+        color: #d4d8e2;
+        background: transparent !important;
+      }
+    }
   }
+
+  // inline code (not in highlight block)
+  p code, li code {
+    background: var(--primary-highlight-color);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.88em;
+  }
+}
+
+// VSCode Dark+ syntax highlighting token colors
+.highlight {
+  // comments
+  .c, .ch, .cd, .cm, .c1, .cs, .cpf { color: #6a9955; font-style: italic; }
+  .cp { color: #6a9955; }
+
+  // keywords
+  .k, .kd, .kn, .kp, .kr, .kv { color: #569cd6; }
+  .kc { color: #569cd6; }  // true/false/null
+  .kt { color: #4ec9b0; }  // type keywords
+
+  // strings
+  .s, .sa, .sb, .sc, .dl, .s1, .s2, .sh, .si, .sx { color: #ce9178; }
+  .sd { color: #ce9178; font-style: italic; }  // docstrings
+  .sr { color: #d16969; }  // regex
+  .ss { color: #ce9178; }  // symbol
+
+  // numbers
+  .m, .mb, .mf, .mh, .mi, .mo, .mx, .il { color: #b5cea8; }
+
+  // functions & methods
+  .nf, .fm { color: #dcdcaa; }
+
+  // classes & types
+  .nc { color: #4ec9b0; }
+  .nn { color: #4ec9b0; background: transparent; }
+
+  // built-ins & constants
+  .nb { color: #9cdcfe; }
+  .no { color: #4fc1ff; }
+  .bp { color: #9cdcfe; background: transparent; }
+
+  // variables
+  .nv, .vi, .vm { color: #9cdcfe; background: transparent; }
+  .vc, .vg { color: #9cdcfe; background: transparent; }
+
+  // attributes (HTML/XML)
+  .na { color: #9cdcfe; }
+
+  // tags (HTML/XML)
+  .nt { color: #569cd6; }
+
+  // operators
+  .o, .ow { color: #d4d4d4; }
+
+  // decorators
+  .nd { color: #dcdcaa; }
+
+  // punctuation / generic text
+  .n, .nx, .py { color: #d4d4d4; background: transparent; }
+  .w { color: #d4d4d4; background: transparent; }
+
+  // errors
+  .err { color: #f48771; background: transparent; }
+
+  // escape sequences
+  .se { color: #d7ba7d; }
+
+  // diff
+  .gi { color: #b5cea8; background: transparent; }
+  .gd { color: #f44747; background: transparent; }
 }

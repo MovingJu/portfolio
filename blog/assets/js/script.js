@@ -9,8 +9,37 @@
   }
 })();
 
+// code block copy button injection
+function initCodeBlocks() {
+  document.querySelectorAll('div.highlight').forEach(block => {
+    const header = document.createElement('div');
+    header.className = 'code-header';
+
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = 'Copy';
+
+    btn.addEventListener('click', () => {
+      const codeEl = block.querySelector('pre code') || block.querySelector('pre');
+      navigator.clipboard.writeText(codeEl.innerText).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    });
+
+    header.appendChild(btn);
+    block.insertBefore(header, block.firstChild);
+  });
+}
+
 // DOM 준비되면 셀렉트 박스 초기화 및 이벤트 바인딩
 window.addEventListener('DOMContentLoaded', () => {
+  initCodeBlocks();
+
   const themeSelector = document.getElementById('themeSelector');
 
   // 옵션 채우기

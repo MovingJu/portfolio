@@ -9,7 +9,6 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-paginate-v2
-  - jekyll-minifier
   - jekyll-assets
   - sprockets
   - autoprefixer-rails
@@ -35,34 +34,6 @@ pagination:
     after: 2
   extension: html
   indexpage: "index"
-
-############################################################
-# Site Configuration data for Jekyll Minifier
-jekyll-minifier:
-  preserve_php: true
-  remove_spaces_inside_tags: true
-  remove_multi_spaces: true
-  remove_comments: true
-  remove_intertag_spaces: true
-  remove_quotes: false
-  compress_css: true
-  compress_javascript: true
-  compress_json: true
-  simple_doctype: false
-  remove_script_attributes: false
-  remove_style_attributes: false
-  remove_link_attributes: false
-  remove_form_attributes: false
-  remove_input_attributes: false
-  remove_javascript_protocol: false
-  remove_http_protocol: false
-  remove_https_protocol: false
-  preserve_line_breaks: false
-  simple_boolean_attributes: false
-  compress_js_templates: false
-  preserve_patterns: []
-  uglifier_args:
-    harmony: true
 
 ############################################################
 assets:
