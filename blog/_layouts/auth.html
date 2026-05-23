@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<div class="mid-section-home">
+  <h1>{{ page.title }}</h1>
+  <div class="auth-layout">
+    <p class="auth-left">{{ page.auth_text }}</p>
+    <div class="auth-right">
+      {{ content }}
+    </div>
+  </div>
+  <a href="{{ '/' | relative_url }}" class="auth-home">Home</a>
+  <p id="auth-message" class="auth-message"></p>
+</div>

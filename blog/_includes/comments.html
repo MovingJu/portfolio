@@ -1,0 +1,40 @@
+<div id="comments-section" class="comments-section" data-post-id="{{ page.url }}">
+
+  <div id="reactions-bar" class="reactions-bar">
+    <button class="reaction-btn" data-reaction="like">👍 <span class="reaction-count" id="count-like">0</span></button>
+    <button class="reaction-btn" data-reaction="heart">❤️ <span class="reaction-count" id="count-heart">0</span></button>
+    <button class="reaction-btn" data-reaction="tada">🎉 <span class="reaction-count" id="count-tada">0</span></button>
+    <button class="reaction-btn" data-reaction="thinking">🤔 <span class="reaction-count" id="count-thinking">0</span></button>
+    <button class="reaction-btn" data-reaction="sad">😢 <span class="reaction-count" id="count-sad">0</span></button>
+  </div>
+
+  <div class="comments-divider"></div>
+
+  <p id="comment-count" class="comments-header">Comments</p>
+
+  <div id="comment-list"></div>
+
+  <form id="comment-form" class="comment-form" style="display:none;" novalidate>
+    <textarea id="comment-content" placeholder="Leave a comment..." rows="4"></textarea>
+    <div class="comment-form-footer">
+      <span class="comment-author-label" id="comment-username-label"></span>
+      <button type="submit" class="comment-submit">Post →</button>
+    </div>
+  </form>
+
+  <div id="comment-login-prompt" class="comment-login-prompt" style="display:none;">
+    <a href="{{ '/login/' | relative_url }}">Login</a> to leave a comment.
+  </div>
+
+</div>
+
+<script>
+  (function() {
+    const u = localStorage.getItem("username");
+    if (u) {
+      const label = document.getElementById("comment-username-label");
+      if (label) label.textContent = u;
+    }
+  })();
+</script>
+<script src="{{ '/assets/js/comments.js' | relative_url }}" defer></script>

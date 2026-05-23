@@ -1,14 +1,26 @@
-<div id="disqus_thread"></div>
+<div id="comment-gate">
+  <div id="disqus_thread"></div>
+  <div id="comment-login-prompt" style="display:none;">
+    <a href="{{ '/login/' | relative_url }}">Login</a> to leave a comment.
+  </div>
+</div>
+
 <script>
-  var disqus_config = function () {
-    this.page.url = '{{ page.url | absolute_url }}';
-    this.page.identifier = '{{ page.url | absolute_url }}';
-  };
   (function() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://{{ site.disqus.shortname }}.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
+    var token = localStorage.getItem('token');
+    if (token) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://{{ site.disqus.shortname }}.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      var disqus_config = function () {
+        this.page.url = '{{ page.url | absolute_url }}';
+        this.page.identifier = '{{ page.url | absolute_url }}';
+      };
+      (d.head || d.body).appendChild(s);
+    } else {
+      document.getElementById('disqus_thread').style.display = 'none';
+      document.getElementById('comment-login-prompt').style.display = '';
+    }
   })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
