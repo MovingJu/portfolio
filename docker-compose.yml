@@ -1,0 +1,25 @@
+services:
+  blog:
+    image: movingju/public:movingju.com
+    restart: always
+    expose:
+      - "4000"
+    networks:
+      - web
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Nginx/movingju.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - blog
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge

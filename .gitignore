@@ -8,3 +8,6 @@ project.sh
 
 _site/
 blog/_site/
+next/node_modules/
+next/.next/
+next/.env*

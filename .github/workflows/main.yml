@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     environment: aws
     runs-on: ubuntu-24.04-arm
 
@@ -22,19 +22,6 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          cd blog
+          cd next
           docker build -t movingju/public:movingju.com .
           docker push movingju/public:movingju.com
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.7.0
-        with:
-          ssh-private-key: ${{ secrets.AWS_EC2_KEY }}
-
-      - name: Run CI/CD.sh on EC2
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.AWS_EC2_USER }}@${{ secrets.AWS_EC2_HOST }} "
-            cd ~
-            docker-compose pull blog
-            docker-compose up -d blog
-          "
